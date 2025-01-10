@@ -62,7 +62,7 @@ class WrapperedKraken:
 
         self.disconFault.set(not self.configSuccess)
 
-    def _refereshAllSigs(self):
+    def _refereshAllSigs(self): # See if this blocks - add to both set and get
         self.motorCurrentSig.refresh()
         self.motorPosSig.refresh()
 
