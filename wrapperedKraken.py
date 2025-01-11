@@ -87,6 +87,7 @@ class WrapperedKraken:
             posCmd (float): motor desired shaft rotations in radians
             arbFF (int, optional): _description_. Defaults to 0.
         """
+        self._refereshAllSigs()
         self.simActPos = posCmd
         self.desPos = posCmd
         posCmdRev = rad2Rev(posCmd)
@@ -102,6 +103,7 @@ class WrapperedKraken:
             velCmd (float): motor desired shaft velocity in radians per second
             arbFF (int, optional): _description_. Defaults to 0.
         """
+        self._refereshAllSigs()
         velCmdRPM = radPerSec2RPM(velCmd)
         self.desVel = velCmdRPM
         velCmdRotPS = velCmdRPM/60.0
@@ -117,6 +119,7 @@ class WrapperedKraken:
             pos = self.simActPos
         else:
             if self.configSuccess:
+                self._refereshAllSigs()
                 pos = rev2Rad(self.motorPosSig.value_as_double)
             else:
                 pos = 0
